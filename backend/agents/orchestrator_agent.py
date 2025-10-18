@@ -12,7 +12,7 @@ class OrchestratorAgent:
         # Initialize the three agents responsible for different tasks
         self.classifier = CategoryClassifierAgent() # Handles product classification (e.g., Electronics, Clothing)
         self.extractor = AttributeExtractorAgent()  # Extracts product attributes (e.g., color, brand, size)
-        self.tagger = TagGeneratorAgent()
+        self.tagger = TagGeneratorAgent()           # Generates relevant tags for the product
 
     def process(self, product: Dict[str, Any]) -> Dict[str, Any]:
         result: Dict[str, Any] = {"input": product}
