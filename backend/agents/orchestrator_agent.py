@@ -16,6 +16,7 @@ class OrchestratorAgent:
     def process(self, product: Dict[str, Any]) -> Dict[str, Any]:
         result: Dict[str, Any] = {"input": product}
 
+        
         attributes = self.extractor.extract_attributes(product)
         result["attributes"] = attributes
 
