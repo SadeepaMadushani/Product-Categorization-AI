@@ -20,7 +20,8 @@ class OrchestratorAgent:
         # Step 1: Extract attributes (like color, brand, etc.)
         attributes = self.extractor.extract_attributes(product)
         result["attributes"] = attributes
-        
+
+        # Step 2: Classify the product into a specific category
         classification = self.classifier.classify_product(product)
         result["classification"] = classification
 
