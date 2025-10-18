@@ -197,10 +197,15 @@ class InformationRetrieval:
 
         expansions = {
             'jean': 'jeans',
+
             'pant': 'pants',
+
             'shirt': 'shirts',
+
             'dress': 'dresses',
+
             'shoe': 'shoes',
+            
             'bag': 'bags'
         }
         
@@ -212,14 +217,23 @@ class InformationRetrieval:
 
         color_variations = {
             'blue': 'blue navy royal sky',
+
             'red': 'red crimson scarlet',
+
             'green': 'green emerald forest',
+
             'black': 'black dark charcoal',
+
             'white': 'white cream ivory',
+
             'brown': 'brown tan beige',
+
             'gray': 'gray grey silver',
+
             'pink': 'pink rose magenta',
+
             'purple': 'purple violet lavender',
+
             'yellow': 'yellow gold amber'
         }
         
@@ -290,9 +304,13 @@ class InformationRetrieval:
     def _extract_colors(self, query: str) -> List[str]:
         """Extract color terms from query."""
         colors = ['red', 'blue', 'green', 'black', 'white', 'brown', 'gray', 'grey', 
+                  
                  'pink', 'purple', 'yellow', 'orange', 'navy', 'royal', 'sky', 'crimson',
+
                  'scarlet', 'emerald', 'forest', 'dark', 'charcoal', 'cream', 'ivory',
+
                  'tan', 'beige', 'silver', 'rose', 'magenta', 'violet', 'lavender',
+
                  'gold', 'amber']
         
         found_colors = []
@@ -306,8 +324,11 @@ class InformationRetrieval:
     def _extract_product_types(self, query: str) -> List[str]:
         """Extract product type terms from query."""
         types = ['jean', 'jeans', 'pant', 'pants', 'shirt', 'shirts', 'dress', 'dresses',
+                 
                 'shoe', 'shoes', 'bag', 'bags', 'jacket', 'jackets', 'coat', 'coats',
+
                 'sweater', 'sweaters', 'hoodie', 'hoodies', 't-shirt', 'tshirt',
+
                 'blouse', 'blouses', 'skirt', 'skirts', 'short', 'shorts']
         
         found_types = []
@@ -365,9 +386,13 @@ class InformationRetrieval:
                     
                     results.append({
                         'product_id': pid,
+
                         'similarity': float(similarities[idx]),
+
                         'product_name': product_info.get('name', 'Unknown'),
+
                         'description': product_info.get('description', ''),
+
                         'category': product_info.get('category', 'Unknown')
                     })
             
@@ -451,6 +476,6 @@ class InformationRetrieval:
             'indexed_products': len(self.product_ids) if self.is_indexed else 0,
 
             'is_indexed': self.is_indexed,
-            
+
             'vocabulary_size': len(self.vectorizer.vocabulary_) if self.is_indexed else 0
         }
