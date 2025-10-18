@@ -1,0 +1,28 @@
+app:
+  name: "Product Categorization AI"
+  version: "1.0.0"
+
+llm:
+  provider: "ollama"
+  model: "gemma3:270m"
+  temperature: 0.1
+  max_tokens: 1000
+
+agents:
+  orchestrator:
+    timeout: 60
+  classifier:
+    confidence_threshold: 0.7
+  extractor:
+    max_attributes: 10
+  tagger:
+    max_tags: 5
+
+security:
+  auth_enabled: true
+  encryption_key: "your-encryption-key-here"
+
+api:
+  host: "127.0.0.1"
+  port: 8000
+  debug: true
