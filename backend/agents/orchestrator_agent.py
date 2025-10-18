@@ -25,6 +25,7 @@ class OrchestratorAgent:
         classification = self.classifier.classify_product(product)
         result["classification"] = classification
 
+        # Step 3: Generate tags using product info and extracted attributes
         tags = self.tagger.generate_tags(product, attributes.get("attributes"))
         result["tags"] = tags
 
