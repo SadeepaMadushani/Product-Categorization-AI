@@ -7,16 +7,27 @@ from enum import Enum
 class ProductData(BaseModel):
     """Schema for product input data"""
     description: str = Field(..., description="Product description or name")
+
     product_id: Optional[str] = Field(None, description="Unique product identifier")
+
     gender: Optional[str] = Field(None, description="Target gender")
+
     master_category: Optional[str] = Field(None, description="Master product category")
+
     sub_category: Optional[str] = Field(None, description="Product subcategory")
+
     article_type: Optional[str] = Field(None, description="Type of article")
+
     base_colour: Optional[str] = Field(None, description="Base color of the product")
+
     season: Optional[str] = Field(None, description="Season for the product")
+
     year: Optional[int] = Field(None, description="Year of production")
+
     usage: Optional[str] = Field(None, description="Intended usage")
+
     product_display_name: Optional[str] = Field(None, description="Display name for the product")
+
     filename: Optional[str] = Field(None, description="Associated filename")
     link: Optional[str] = Field(None, description="Product link")
 
@@ -47,12 +58,19 @@ class AttributeValue(BaseModel):
 class AttributesResult(BaseModel):
     """Schema for extracted product attributes"""
     color: Optional[AttributeValue] = Field(None, description="Color attribute")
+
     material: Optional[AttributeValue] = Field(None, description="Material attribute")
+
     size: Optional[AttributeValue] = Field(None, description="Size attribute")
+
     pattern: Optional[AttributeValue] = Field(None, description="Pattern attribute")
+
     style: Optional[AttributeValue] = Field(None, description="Style attribute")
+
     gender: Optional[AttributeValue] = Field(None, description="Gender attribute")
+
     seasonality: Optional[AttributeValue] = Field(None, description="Seasonality attribute")
+
     occasion: Optional[AttributeValue] = Field(None, description="Occasion attribute")
     entities: Optional[List[Dict[str, Any]]] = Field(None, description="Named entities")
 
@@ -77,9 +95,13 @@ class TagGenerationRequest(BaseModel):
 class TagGenerationResponse(BaseModel):
     """Schema for tag generation responses"""
     tags: List[Tag] = Field(..., description="Generated tags")
+
     generation_timestamp: str = Field(..., description="Timestamp of generation")
+
     total_generated: Optional[int] = Field(None, description="Total tags generated before deduplication")
+
     final_count: Optional[int] = Field(None, description="Final number of unique tags")
+    
     error: Optional[str] = Field(None, description="Error message if generation failed")
 
 class ProcessingResult(BaseModel):
@@ -106,5 +128,7 @@ class HealthCheck(BaseModel):
 class ValidationError(BaseModel):
     """Schema for validation errors"""
     field: str = Field(..., description="Field that failed validation")
+
     message: str = Field(..., description="Validation error message")
+
     value: Any = Field(..., description="Value that failed validation")
