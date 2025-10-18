@@ -29,19 +29,12 @@ class AttributeExtractorAgent:
             
             Extract the following attributes:
             - color: primary color(s)
-
             - material: fabric or material composition
-
             - size: size information if available
-
             - pattern: pattern or design
-
             - style: fashion or product style
-
             - gender: intended gender if specified
-
             - seasonality: appropriate seasons
-
             - occasion: suitable occasions
             
             Respond with a JSON object containing these attributes.
@@ -50,19 +43,12 @@ class AttributeExtractorAgent:
             
             response_format = {
                 "color": {"value": "string", "confidence": "float"},
-
                 "material": {"value": "string", "confidence": "float"},
-
                 "size": {"value": "string", "confidence": "float"},
-
                 "pattern": {"value": "string", "confidence": "float"},
-
                 "style": {"value": "string", "confidence": "float"},
-
                 "gender": {"value": "string", "confidence": "float"},
-
                 "seasonality": {"value": "string", "confidence": "float"},
-                
                 "occasion": {"value": "string", "confidence": "float"}
             }
             
