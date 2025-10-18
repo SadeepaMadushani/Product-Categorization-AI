@@ -19,7 +19,8 @@ class InformationRetrieval:
     Advanced information retrieval system using TF-IDF and cosine similarity.
     """
     
-    # Class-level cache for shared instances
+    # Class-level cache 
+
     _shared_instances = {}
     
     def __init__(self, product_database: Optional[List[Dict[str, Any]]] = None):
@@ -33,7 +34,7 @@ class InformationRetrieval:
         self.vectorizer = TfidfVectorizer(
             max_features=2000,
             stop_words='english',
-            ngram_range=(1, 3),  # Include trigrams for better color matching
+            ngram_range=(1, 3),  
             min_df=1,
             max_df=0.95,
             lowercase=True
@@ -74,6 +75,7 @@ class InformationRetrieval:
             
         try:
             # Extract descriptions for indexing
+
             descriptions = []
             self.product_ids = []
             
@@ -90,6 +92,7 @@ class InformationRetrieval:
                 return
                 
             # Build TF-IDF matrix
+
             self.tfidf_matrix = self.vectorizer.fit_transform(descriptions)
             self.is_indexed = True
             logger.info(f"Successfully built index for {len(descriptions)} products")
@@ -158,7 +161,7 @@ class InformationRetrieval:
             # Build results
             results = []
             for idx in top_indices:
-                if similarities[idx] > 0:  # Only include products with some similarity
+                if similarities[idx] > 0:  # Only include products with similarity
                     product_id = self.product_ids[idx]
                     product_info = self._get_product_info(product_id)
                     
@@ -187,9 +190,11 @@ class InformationRetrieval:
             Preprocessed query string
         """
         # Convert to lowercase
+
         query = query.lower()
         
         # Expand common abbreviations
+
         expansions = {
             'jean': 'jeans',
             'pant': 'pants',
@@ -202,7 +207,9 @@ class InformationRetrieval:
         for short, long in expansions.items():
             query = re.sub(r'\b' + short + r'\b', long, query)
         
-        # Add color variations
+        
+        #Add colour variation
+
         color_variations = {
             'blue': 'blue navy royal sky',
             'red': 'red crimson scarlet',
@@ -260,6 +267,7 @@ class InformationRetrieval:
                             break
                 
                 # Product type boosting
+
                 if product_types:
                     product_text = ' '.join([
                         str(product_info.get('name', '')),
@@ -327,6 +335,7 @@ class InformationRetrieval:
             
         try:
             # Find the product index
+
             product_idx = None
             for i, pid in enumerate(self.product_ids):
                 if str(pid) == str(product_id):
@@ -338,6 +347,7 @@ class InformationRetrieval:
                 return []
             
             # Get similarity scores for this product
+
             similarities = cosine_similarity(
                 self.tfidf_matrix[product_idx:product_idx+1], 
                 self.tfidf_matrix
@@ -437,7 +447,10 @@ class InformationRetrieval:
         """
         return {
             'total_products': len(self.product_database),
+
             'indexed_products': len(self.product_ids) if self.is_indexed else 0,
+
             'is_indexed': self.is_indexed,
+            
             'vocabulary_size': len(self.vectorizer.vocabulary_) if self.is_indexed else 0
         }
