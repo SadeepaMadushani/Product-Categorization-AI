@@ -9,6 +9,7 @@ class OrchestratorAgent:
     """Coordinates multiple agents to process a product payload."""
 
     def __init__(self):
+        # Initialize the three agents responsible for different tasks
         self.classifier = CategoryClassifierAgent()
         self.extractor = AttributeExtractorAgent()
         self.tagger = TagGeneratorAgent()
