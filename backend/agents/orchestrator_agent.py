@@ -19,6 +19,7 @@ class OrchestratorAgent:
         attributes = self.extractor.extract_attributes(product)
         result["attributes"] = attributes
 
+        
         classification = self.classifier.classify_product(product)
         result["classification"] = classification
 
