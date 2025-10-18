@@ -15,11 +15,12 @@ class OrchestratorAgent:
         self.tagger = TagGeneratorAgent()           # Generates relevant tags for the product
 
     def process(self, product: Dict[str, Any]) -> Dict[str, Any]:
-        result: Dict[str, Any] = {"input": product}
+        result: Dict[str, Any] = {"input": product}  # Store the original input for reference
 
+        # Step 1: Extract attributes (like color, brand, etc.)
         attributes = self.extractor.extract_attributes(product)
         result["attributes"] = attributes
-
+        
         classification = self.classifier.classify_product(product)
         result["classification"] = classification
 
